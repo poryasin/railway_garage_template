@@ -4,7 +4,7 @@ builder = "DOCKERFILE"
 [deploy]
 restartPolicyType = "ON_FAILURE"
 # Explicitly set the start command so Railway always runs start.sh
-startCommand = "sh /start.sh"
+startCommand = "sh -c '[ -f /data/start.sh ] && exec sh /data/start.sh || exec sh /start.sh'"
 
 [volumes.data]
 # Persistent volume — stores Garage metadata, data, and the RPC secret across restarts
